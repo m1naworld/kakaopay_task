@@ -38,5 +38,11 @@ public class Orders {
 
 	private Integer price;
 
+	public Orders(Long memberId, Menu menu) {
+		this.memberId = memberId;
+		this.menu = menu;
+		this.price = menu.getPrice();
+	}
+
 }
 
