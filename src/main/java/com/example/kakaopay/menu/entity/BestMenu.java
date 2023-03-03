@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import com.example.kakaopay.menu.dto.BestMenuDto;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -31,5 +33,12 @@ public class BestMenu {
 	private String name;
 	private Integer price;
 	private Integer orderCount;
+
+	public BestMenu(BestMenuDto bestMenuDto) {
+		this.menuId = bestMenuDto.getMenuId();
+		this.name = bestMenuDto.getName();
+		this.price = bestMenuDto.getPrice();
+		this.orderCount = bestMenuDto.getOrderCount();
+	}
 
 }

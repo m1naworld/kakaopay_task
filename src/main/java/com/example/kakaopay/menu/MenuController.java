@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.kakaopay.common.response.Response;
+import com.example.kakaopay.menu.dto.BestMenuRes;
 import com.example.kakaopay.menu.dto.MenuRes;
 
 import io.swagger.annotations.ApiOperation;
@@ -40,6 +41,18 @@ public class MenuController {
 			return Response.toError(NOT_FOUND_MENU_LIST);
 		}
 		return new Response<>().toSuccessData(ORDER_SUCCESS, menuList);
+	}
+
+	@ApiOperation(value = "인기메뉴 목록 조회 API")
+	@GetMapping("/best")
+	public ResponseEntity<?> bestMenuList() {
+
+		List<BestMenuRes> bestMenuList = menuService.getBestMenuList();
+
+		if (bestMenuList == null) {
+			return Response.toError(NOT_FOUND_MENU_LIST);
+		}
+		return new Response<>().toSuccessData(ORDER_SUCCESS, bestMenuList);
 	}
 
 }
