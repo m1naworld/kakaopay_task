@@ -17,4 +17,15 @@ public class Point {
 	private Long memberId;
 
 	private Integer point;
+
+	public Point(Long memberId, int point) {
+		this.memberId = memberId;
+		this.point = point;
+	}
+
+	public void updatePoint(int point) {
+		this.point += point;
+	}
+
+	public void paymentPoint(int point) { this.point -= point; }
 }
