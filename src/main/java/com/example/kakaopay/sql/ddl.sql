@@ -27,10 +27,10 @@ CREATE TABLE orders (
     menu_id BIGINT NOT NULL,
     price INT NOT NULL
 );
+ALTER TABLE orders ADD INDEX order_date_idx(order_date);
 
 CREATE TABLE best_menu (
-    id BIGINT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    dates DATE NOT NULL,
+    dates DATE NOT NULL PRIMARY KEY,
     menu_id BIGINT NOT NULL,
     name VARCHAR(20) NOT NULL,
     price INT NOT NULL,
