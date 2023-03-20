@@ -2,10 +2,9 @@ package com.example.kakaopay.menu.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.springframework.data.annotation.CreatedDate;
@@ -23,15 +22,19 @@ import lombok.NoArgsConstructor;
 public class BestMenu {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-
 	@CreatedDate
 	private LocalDate dates;
 
+	@Column(nullable = false)
 	private Long menuId;
+
+	@Column(nullable = false)
 	private String name;
+
+	@Column(nullable = false)
 	private Integer price;
+
+	@Column(nullable = false)
 	private Integer orderCount;
 
 	public BestMenu(BestMenuDto bestMenuDto) {

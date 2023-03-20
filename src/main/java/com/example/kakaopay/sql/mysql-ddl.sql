@@ -10,7 +10,7 @@ CREATE TABLE members (
 
 CREATE TABLE points (
     member_id BIGINT NOT NULL PRIMARY KEY,
-    point INT NOT NULL DEFAULT 0
+    point INT NOT NULL
 );
 
 CREATE TABLE point_credit(

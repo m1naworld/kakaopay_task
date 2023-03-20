@@ -1,20 +1,16 @@
-package com.example.kakaopay.order;
+package com.example.kakaopay.point.entity;
 
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import com.example.kakaopay.menu.entity.Menu;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,31 +19,23 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class Orders {
+public class PointCredit {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(nullable = false)
-	@CreatedDate
-	private LocalDateTime orderDate;
-
-	@Column(nullable = false)
 	private Long memberId;
 
 	@Column(nullable = false)
-	@OneToOne(fetch = FetchType.LAZY)
-	private Menu menu;
+	private Integer point;
 
-	@Column(nullable = false)
-	private Integer price;
+	@CreatedDate
+	private LocalDateTime creditDate;
 
-	public Orders(Long memberId, Menu menu) {
+	public PointCredit(Long memberId, Integer point) {
 		this.memberId = memberId;
-		this.menu = menu;
-		this.price = menu.getPrice();
+		this.point = point;
 	}
-
 }
-

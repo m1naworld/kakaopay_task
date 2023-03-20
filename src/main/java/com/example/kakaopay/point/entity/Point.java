@@ -1,5 +1,6 @@
-package com.example.kakaopay.point;
+package com.example.kakaopay.point.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -16,6 +17,7 @@ public class Point {
 	@Id
 	private Long memberId;
 
+	@Column(nullable = false)
 	private Integer point;
 
 	public Point(Long memberId, int point) {
@@ -23,9 +25,9 @@ public class Point {
 		this.point = point;
 	}
 
-	public void updatePoint(int point) {
+	public void add(int point) {
 		this.point += point;
 	}
 
-	public void paymentPoint(int point) { this.point -= point; }
+	public void payment(int point) { this.point -= point; }
 }

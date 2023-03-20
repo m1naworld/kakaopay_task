@@ -19,9 +19,10 @@ public interface BestMenuRepository extends JpaRepository<BestMenu, Long> {
 	@Query(value = "SELECT o.menu_id AS menuId, m.name, m.price, COUNT(o.menu_id) AS orderCount "
 		+ "FROM Orders o "
 		+ "INNER JOIN MENU m on o.menu_id = m.id "
-		+ "WHERE o.dates BETWEEN :aWeekAgo AND :aDayAgo "
+		+ "WHERE o.order_date BETWEEN :aWeekAgo AND :aDayAgo "
 		+ "GROUP BY o.menu_id "
 		+ "LIMIT 3", nativeQuery = true)
+
 	List<BestMenuDto> findOneWeekOrders(@Param("aWeekAgo") LocalDateTime aWeekAgo, @Param("aDayAgo") LocalDateTime aDayAgo);
 
 }
