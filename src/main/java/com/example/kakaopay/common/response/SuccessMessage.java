@@ -8,6 +8,7 @@ import lombok.Getter;
 public enum SuccessMessage {
 
 	ORDER_SUCCESS(200, "주문 성공"),
+	ORDER_SAVE_SUCCESS(200, "주문내역 저장 성공"),
 	SAVE_POINT_SUCCESS(200, "포인트 충전 성공");
 
 	private final int statusCode;
